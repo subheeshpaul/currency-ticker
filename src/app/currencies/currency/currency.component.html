@@ -1,0 +1,19 @@
+<div class="table-responsive"   *ngIf="currencyList$ | async as currencyList">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>Currency Code</th>
+          <th>Rate</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let currency of currencyList">
+        <tr>
+          <td>{{ currency.currencyType }}</td>
+          <td>{{ currency.rate | number:'3.3' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="alert alert-danger" *ngIf="errorMessage$ | async as errorMessage">
+   {{ errorMessage }}
+</div>

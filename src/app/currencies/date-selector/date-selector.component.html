@@ -1,0 +1,15 @@
+<div class="row justify-content-between" *ngIf="currencyList$ | async as currencyList">
+     <div class="col-sm-3">
+      <label for="listbox">Select a date:</label>
+      <select class="form-control" id = "listbox"
+      (change)="onSelected($event.target.value)"> 
+          <option value="0" class="selected" >{{dateSelectionMessage}}</option>
+          <option  *ngFor="let currency of currencyList"
+              [value]="currency.date">{{ currency.date | date:'d/MMM/yyyy' }}</option>
+      </select>
+    </div>
+</div>
+<div class="alert"
+  *ngIf="errorMessage$ | async as errorMessage">
+  {{ errorMessage }}
+</div>
